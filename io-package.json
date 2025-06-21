@@ -2,6 +2,12 @@
   "common": {
     "name": "solarprognose2",
     "version": "0.0.3",
+    "authors": [
+      {
+        "name": "DominikJaco",
+        "email": "your@email.com"
+      }
+    ],
     "licenseInformation": {
       "type": "free",
       "license": "MIT",
@@ -110,9 +116,7 @@
     "zh-cn"
   ],
   "restartAdapters": [],
-  "adminUI": {
-    "config": "json"
-  },
+  "adminUI":  "json",
   "dataSource": "poll",
   "connectionType": "cloud",
   "compact": true,
