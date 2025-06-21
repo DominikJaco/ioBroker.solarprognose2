@@ -28,10 +28,11 @@
     "mocha": "^10.2.0"
   },
   "main": "main.js",
-  "scripts": {
-    "test": "npm run test:package && npm run test:unit",
-    "test:package": "mocha test/package --exit",
-    "test:unit": "mocha test/unit --exit",
+  "scripts": {  
+    "test": "npm run test:package && npm run test:js",  
+    "test:package": "mocha test/package --exit",  
+    "test:js": "mocha test/unit --exit",
+    "adapter:check": "adapter-check",
     "release": "release-script"
   },
   "bugs": {

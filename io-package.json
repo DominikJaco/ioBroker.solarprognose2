@@ -1,11 +1,20 @@
 {
   "common": {
     "name": "solarprognose",
-    "version": "1.0.0",
+    "version": "0.0.1",
     "title": "SolarPrognose",
     "desc": {
       "en": "Fetches solar forecasts from solarprognose.de",
-      "de": "Liest Solarprognosen von solarprognose.de"
+      "de": "Gebühren Solarprognose von solarprognose.de",
+      "ru": "Солнечные прогнозы от Solarprognose.de",
+      "pt": "Fetches previsões solares de solarprognose.de",
+      "nl": "Fetches zonnevoorspellingen van zonneprognose.de",
+      "fr": "Fetches prévisions solaires de solarprognose.de",
+      "it": "Fetches previsioni solari da solarprognose.de",
+      "es": "Pronósticos solares de Solarprognose.de",
+      "pl": "Fetches prognozy słoneczne z solarprognose.de",
+      "uk": "Fetches сонячні прогнози від solarprognose.de",
+      "zh-cn": "从太阳预测中获取太阳预报.de"
     },
     "license": "MIT",
     "platform": "Javascript/Node.js",
@@ -42,7 +51,9 @@
       {
         "js-controller": ">=3.0.0"
       }
-    ]
+    ],
+    "protectedNative": ["apiKey"],
+    "encryptedNative": ["apiKey"]
   },
   "native": {
     "accessToken": "",
@@ -59,6 +70,7 @@
     "cacheTTL": 300000,
     "requestTimeout": 15000
   },
+
   "instanceObjects": [
     {
       "_id": "info",
