@@ -1,8 +1,8 @@
-# solarprognose
+# iobroker.solarprognose2
 
-[![NPM version](http://img.shields.io/npm/v/iobroker.solarprognose.svg)](https://www.npmjs.com/package/iobroker.solarprognose)
-![Number of Installations](http://iobroker.live/badges/solarprognose-installed.svg)
-![Stable version](http://iobroker.live/badges/solarprognose-stable.svg)
+[![NPM version](http://img.shields.io/npm/v/iobroker.solarprognose2.svg)](https://www.npmjs.com/package/iobroker.solarprognose2)
+![Number of Installations](http://iobroker.live/badges/solarprognose2-installed.svg)
+![Stable version](http://iobroker.live/badges/solarprognose2-stable.svg)
 
 Solar forecast adapter for ioBroker that retrieves data from solarprognose.de.
 
