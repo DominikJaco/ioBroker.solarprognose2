@@ -1,8 +1,12 @@
 {
   "common": {
-    "name": "solarprognose",
+    "name": "solarprognose2",
     "version": "0.0.1",
     "title": "SolarPrognose",
+    "titleLang": {
+      "en": "SolarPrognose",
+      "de": "SolarPrognose"
+    },
     "desc": {
       "en": "Fetches solar forecasts from solarprognose.de",
       "de": "Gebühren Solarprognose von solarprognose.de",
@@ -19,6 +23,15 @@
     "license": "MIT",
     "platform": "Javascript/Node.js",
     "icon": "solarprognose.png",
+    "extIcon": "https://raw.githubusercontent.com/DominikJaco/ioBroker.solarprognose2/main/admin/solarprognose.png",
+    "mode": "daemon",
+    "authors": ["DominikJaco <your@email.com>"],
+    "news": {
+      "0.0.1": {
+        "en": "Initial release",
+        "de": "Erstveröffentlichung"
+      }
+    },
     "enabled": true,
     "messagebox": true,
     "materialize": true,
@@ -47,9 +60,16 @@
       "config": "json"
     },
     "dataSource": "poll",
+    "connectionType": "cloud",
+    "licenseInformation": {
+      "name": "MIT",
+      "link": "https://opensource.org/licenses/MIT"
+    },
+    "compact": true,
+    "tier": 1,
     "dependencies": [
       {
-        "js-controller": ">=3.0.0"
+       "js-controller": ">=5.0.19"
       }
     ],
     "protectedNative": ["apiKey"],

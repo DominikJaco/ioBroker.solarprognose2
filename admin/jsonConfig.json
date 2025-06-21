@@ -1,11 +1,12 @@
 {
-  "type": "tabs",
+  "type": "panel",
   "items": [
     {
       "title": "API_SETTINGS",
       "items": [
         {
-          "type": "text",
+          "name": "accessToken", 
+          "type": "password",
           "label": "ACCESS_TOKEN",
           "id": "accessToken",
           "password": true,
@@ -13,6 +14,7 @@
           "help": "ACCESS_TOKEN_HELP"
         },
         {
+          "name": "inverterId",
           "type": "number",
           "label": "INVERTER_ID",
           "id": "inverterId",
