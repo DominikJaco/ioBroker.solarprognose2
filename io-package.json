@@ -1,7 +1,7 @@
 {
   "common": {
     "name": "solarprognose2",
-    "version": "0.0.9",
+    "version": "0.0.10",
     "licenseInformation": {
       "type": "free",
       "license": "MIT",
