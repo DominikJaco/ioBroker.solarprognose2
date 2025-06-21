@@ -87,7 +87,9 @@
       }
     ],
     "icon": "solarprognose.png",
-    "adminUI": "json"
+    "adminUI": {
+      "config": "json"
+    }
   },
   "platform": "Javascript/Node.js",
   "mode": "daemon",
