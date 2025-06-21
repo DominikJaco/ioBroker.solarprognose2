@@ -1,8 +1,7 @@
-# iobroker.solarprognose2
+# ioBroker.solarprognose2
 
-[![NPM version](http://img.shields.io/npm/v/iobroker.solarprognose2.svg)](https://www.npmjs.com/package/iobroker.solarprognose2)
-![Number of Installations](http://iobroker.live/badges/solarprognose2-installed.svg)
-![Stable version](http://iobroker.live/badges/solarprognose2-stable.svg)
+[![NPM version](https://img.shields.io/npm/v/iobroker.solarprognose2.svg)](https://www.npmjs.com/package/iobroker.solarprognose2)
+![Current Version](https://img.shields.io/badge/current%20version-0.0.2-blue)
 
 Solar forecast adapter for ioBroker that retrieves data from solarprognose.de.
 
@@ -41,10 +40,18 @@ Solar forecast adapter for ioBroker that retrieves data from solarprognose.de.
 - Chinese (zh-cn)
 
 ## Changelog
-### 1.0.0
+## Changelog
+### 0.0.2 (2025-06-21)
+- Fixed all adapter validation issues
+- Added encrypted API key storage
+- Updated dependencies
+- Improved documentation
+
+### 0.0.1 (2025-06-21)
 - Initial release
 
+
 ## License
-MIT License
+MIT License © 2025 DominikJaco
 
 Copyright (c) [year] [fullname]

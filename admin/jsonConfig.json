@@ -5,8 +5,8 @@
       "title": "API_SETTINGS",
       "items": [
         {
+          "type": "text",
           "name": "accessToken", 
-          "type": "password",
           "label": "ACCESS_TOKEN",
           "id": "accessToken",
           "password": true,
@@ -14,8 +14,8 @@
           "help": "ACCESS_TOKEN_HELP"
         },
         {
+        "type": "number",
           "name": "inverterId",
-          "type": "number",
           "label": "INVERTER_ID",
           "id": "inverterId",
           "min": 1,
@@ -54,16 +54,17 @@
       "items": [
         {
           "type": "select",
+          "name": "apiType",
           "label": "API_TYPE",
           "id": "apiType",
           "options": [
             {
               "value": "hourly",
-              "label": "API_HOURLY"
+              "label": "Hourly"
             },
             {
               "value": "daily",
-              "label": "API_DAILY"
+              "label": "Daily"
             }
           ],
           "default": "hourly"

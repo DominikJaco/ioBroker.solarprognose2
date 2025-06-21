@@ -1,11 +1,28 @@
 {
   "common": {
     "name": "solarprognose2",
-    "version": "0.0.1",
+    "version": "0.0.2",
+    "licenseInformation": {
+      "type": "free",
+      "license": "MIT",
+      "link": "https://opensource.org/licenses/MIT",
+      "licensor": {
+        "name": "DominikJaco",
+        "email": "your@email.com"
+      },
     "title": "SolarPrognose",
     "titleLang": {
       "en": "SolarPrognose",
-      "de": "SolarPrognose"
+      "de": "SolarPrognose",
+      "ru": "Солнечный прогноз",
+      "pt": "Previsão Solar",
+      "nl": "Zonne-energie Prognose",
+      "fr": "Prévision Solaire",
+      "it": "Previsione Solare",
+      "es": "Pronóstico Solar",
+      "pl": "Prognoza Słoneczna",
+      "uk": "Сонячний прогноз",
+      "zh-cn": "太阳能预测"
     },
     "desc": {
       "en": "Fetches solar forecasts from solarprognose.de",
@@ -20,7 +37,23 @@
       "uk": "Fetches сонячні прогнози від solarprognose.de",
       "zh-cn": "从太阳预测中获取太阳预报.de"
     },
-    "license": "MIT",
+    "news": {
+      "0.0.2": {
+        "en": "Fixed adapter validation issues",
+        "de": "Adapter-Validierungsprobleme behoben",
+        "ru": "Исправлены проблемы с проверкой адаптера",
+        "pt": "Problemas de validação do adaptador corrigidos",
+        "nl": "Adapter validatieproblemen opgelost",
+        "fr": "Problèmes de validation de l'adaptateur résolus",
+        "it": "Risolti problemi di convalida dell'adattatore",
+        "es": "Problemas de validación del adaptador corregidos",
+        "pl": "Naprawiono problemy z walidacją adaptera",
+        "uk": "Виправлено проблеми з перевіркою адаптера",
+        "zh-cn": "修复了适配器验证问题"
+      }
+    },
+    "extIcon": "https://raw.githubusercontent.com/DominikJaco/ioBroker.solarprognose2/main/admin/solarprognose.png"
+  },
     "platform": "Javascript/Node.js",
     "icon": "solarprognose.png",
     "extIcon": "https://raw.githubusercontent.com/DominikJaco/ioBroker.solarprognose2/main/admin/solarprognose.png",
@@ -41,7 +74,6 @@
       "energy",
       "photovoltaic"
     ],
-    "type": "weather",
     "languages": [
       "en",
       "de",
@@ -61,10 +93,6 @@
     },
     "dataSource": "poll",
     "connectionType": "cloud",
-    "licenseInformation": {
-      "name": "MIT",
-      "link": "https://opensource.org/licenses/MIT"
-    },
     "compact": true,
     "tier": 1,
     "dependencies": [
