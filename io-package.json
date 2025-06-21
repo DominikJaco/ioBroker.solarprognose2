@@ -1,7 +1,7 @@
 {
   "common": {
     "name": "solarprognose2",
-    "version": "0.0.2",
+    "version": "0.0.3",
     "licenseInformation": {
       "type": "free",
       "license": "MIT",
@@ -38,20 +38,46 @@
       "zh-cn": "从太阳预测中获取太阳预报.de"
     },
     "news": {
-      "0.0.2": {
-        "en": "Fixed adapter validation issues",
-        "de": "Adapter-Validierungsprobleme behoben",
-        "ru": "Исправлены проблемы с проверкой адаптера",
-        "pt": "Problemas de validação do adaptador corrigidos",
-        "nl": "Adapter validatieproblemen opgelost",
-        "fr": "Problèmes de validation de l'adaptateur résolus",
-        "it": "Risolti problemi di convalida dell'adattatore",
-        "es": "Problemas de validación del adaptador corregidos",
-        "pl": "Naprawiono problemy z walidacją adaptera",
-        "uk": "Виправлено проблеми з перевіркою адаптера",
-        "zh-cn": "修复了适配器验证问题"
-      }
-    },
+  "0.0.3": {
+    "en": "Added comprehensive testing framework with Mocha/Chai and GitHub Actions CI",
+    "de": "Umfangreiches Test-Framework mit Mocha/Chai und GitHub Actions CI hinzugefügt",
+    "ru": "Добавлена комплексная тестовая среда с Mocha/Chai и GitHub Actions CI",
+    "pt": "Adicionada estrutura de teste abrangente com Mocha/Chai e GitHub Actions CI",
+    "nl": "Uitgebreid testraamwerk met Mocha/Chai en GitHub Actions CI toegevoegd",
+    "fr": "Ajout d'un cadre de test complet avec Mocha/Chai et GitHub Actions CI",
+    "it": "Aggiunto framework di test completo con Mocha/Chai e GitHub Actions CI",
+    "es": "Se añadió un marco de pruebas integral con Mocha/Chai y GitHub Actions CI",
+    "pl": "Dodano kompleksowe framework testowy z Mocha/Chai i GitHub Actions CI",
+    "uk": "Додано комплексну тестову структуру з Mocha/Chai та GitHub Actions CI",
+    "zh-cn": "添加了包含 Mocha/Chai 和 GitHub Actions CI 的全面测试框架"
+  },
+  "0.0.2": {
+    "en": "Fixed validation issues, added API encryption and multi-language titles",
+    "de": "Validierungsprobleme behoben, API-Verschlüsselung und mehrsprachige Titel hinzugefügt",
+    "ru": "Исправлены проблемы с проверкой, добавлено шифрование API и многоязычные заголовки",
+    "pt": "Problemas de validação corrigidos, criptografia API e títulos multilíngues adicionados",
+    "nl": "Validatieproblemen opgelost, API-codering en meertalige titels toegevoegd",
+    "fr": "Problèmes de validation corrigés, chiffrement API et titres multilingues ajoutés",
+    "it": "Problemi di convalida risolti, crittografia API e titoli multilingue aggiunti",
+    "es": "Problemas de validación corregidos, encriptación API y títulos multilingües añadidos",
+    "pl": "Naprawiono problemy z walidacją, dodano szyfrowanie API i wielojęzyczne tytuły",
+    "uk": "Виправлено проблеми з перевіркою, додано шифрування API та багатомовні заголовки",
+    "zh-cn": "修复了验证问题，添加了 API 加密和多语言标题"
+  },
+  "0.0.1": {
+    "en": "Initial release with solar forecast functionality and VIS widget",
+    "de": "Erstveröffentlichung mit Solarprognose-Funktionalität und VIS-Widget",
+    "ru": "Первоначальный выпуск с функцией прогноза солнечной энергии и виджетом VIS",
+    "pt": "Lançamento inicial com funcionalidade de previsão solar e widget VIS",
+    "nl": "Eerste release met zonne-energie prognose functionaliteit en VIS-widget",
+    "fr": "Version initiale avec fonctionnalité de prévision solaire et widget VIS",
+    "it": "Rilascio iniziale con funzionalità di previsione solare e widget VIS",
+    "es": "Lanzamiento inicial con funcionalidad de pronóstico solar y widget VIS",
+    "pl": "Pierwsze wydanie z funkcją prognozy słonecznej i widżetem VIS",
+    "uk": "Початковий випуск з функцією прогнозу сонячної енергії та віджетом VIS",
+    "zh-cn": "初始版本包含太阳能预测功能和 VIS 小部件"
+  }
+},
     "extIcon": "https://raw.githubusercontent.com/DominikJaco/ioBroker.solarprognose2/main/admin/solarprognose.png"
   },
     "platform": "Javascript/Node.js",

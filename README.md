@@ -39,16 +39,8 @@ Solar forecast adapter for ioBroker that retrieves data from solarprognose.de.
 - Ukrainian (uk)
 - Chinese (zh-cn)
 
-## Changelog
-## Changelog
-### 0.0.2 (2025-06-21)
-- Fixed all adapter validation issues
-- Added encrypted API key storage
-- Updated dependencies
-- Improved documentation
-
-### 0.0.1 (2025-06-21)
-- Initial release
+## 📜 Changelog
+Alle Versionen und Änderungen sind im [CHANGELOG.md](CHANGELOG.md) dokumentiert.
 
 
 ## License
