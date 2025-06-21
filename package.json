@@ -1,6 +1,6 @@
 {
   "name": "iobroker.solarprognose2",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "Solar forecast integration for ioBroker",
   "author": {
     "name": "Dominik Jacobs",
