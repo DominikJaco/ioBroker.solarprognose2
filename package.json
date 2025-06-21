@@ -1,0 +1,50 @@
+{
+  "name": "iobroker.solarprognose",
+  "version": "1.0.0",
+  "description": "Solar forecast integration for ioBroker",
+  "author": {
+    "name": "Your Name",
+    "email": "your@email.com"
+  },
+  "homepage": "https://github.com/your-repo/iobroker.solarprognose",
+  "license": "MIT",
+  "keywords": [
+    "ioBroker",
+    "solar",
+    "forecast",
+    "energy"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/your-repo/iobroker.solarprognose.git"
+  },
+  "dependencies": {
+    "@iobroker/adapter-core": "^3.1.0",
+    "axios": "^1.4.0"
+  },
+  "devDependencies": {
+    "@iobroker/testing": "^3.1.0",
+    "chai": "^4.3.7",
+    "mocha": "^10.2.0"
+  },
+  "main": "main.js",
+  "scripts": {
+    "test": "npm run test:package && npm run test:unit",
+    "test:package": "mocha test/package --exit",
+    "test:unit": "mocha test/unit --exit",
+    "release": "release-script"
+  },
+  "bugs": {
+    "url": "https://github.com/your-repo/iobroker.solarprognose/issues"
+  },
+  "engines": {
+    "node": ">=14.0.0"
+  },
+  "files": [
+    "admin/",
+    "lib/",
+    "io-package.json",
+    "LICENSE",
+    "main.js"
+  ]
+}

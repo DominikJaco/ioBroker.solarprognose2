@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title data-i18n="ADAPTER_CONFIG_TITLE"></title>
+    <script src="../../lib/js/socket.io.js"></script>
+    <script src="../../lib/js/jquery-3.4.1.min.js"></script>
+    <script src="../../js/adapter-settings.js"></script>
+    <script src="../../js/i18n.js"></script>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .tab-button {
+            display: inline-block;
+            padding: 10px 15px;
+            margin: 0 5px 5px 0;
+            background: #e0e0e0;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+        .tab-button.active {
+            background: #0078d7;
+            color: white;
+        }
+        .tab-content {
+            display: none;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            margin-bottom: 20px;
+        }
+        .tab-content.active {
+            display: block;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        .help-block {
+            color: #6c757d;
+            font-size: 0.9em;
+        }
+    </style>
+</head>
+<body>
+    <h2 data-i18n="ADAPTER_CONFIG_TITLE"></h2>
+    
+    <div id="tabs">
+        <div class="tab-button active" data-tab="api" data-i18n="API_SETTINGS"></div>
+        <div class="tab-button" data-tab="forecast" data-i18n="FORECAST_SETTINGS"></div>
+        <div class="tab-button" data-tab="advanced" data-i18n="ADVANCED_SETTINGS"></div>
+    </div>
+    
+    <form class="form-horizontal">
+        <!-- API Settings Tab -->
+        <div class="tab-content active" id="api-tab">
+            <div class="form-group">
+                <label class="control-label" data-i18n="ACCESS_TOKEN"></label>
+                <input type="password" class="form-control" id="accessToken">
+                <p class="help-block" data-i18n="ACCESS_TOKEN_HELP"></p>
+            </div>
+            
+            <div class="form-group">
+                <label class="control-label" data-i18n="INVERTER_ID"></label>
+                <input type="number" class="form-control" id="inverterId" min="1">
+            </div>
+            
+            <div class="form-group">
+                <label class="control-label" data-i18n="ITEM_TYPE"></label>
+                <select class="form-control" id="item">
+                    <option value="inverter" data-i18n="ITEM_INVERTER"></option>
+                    <option value="plant" data-i18n="ITEM_PLANT"></option>
+                    <option value="location" data-i18n="ITEM_LOCATION"></option>
+                </select>
+            </div>
+            
+            <div class="form-group">
+                <label class="control-label" data-i18n="PROJECT_INFO"></label>
+                <input type="text" class="form-control" id="project">
+            </div>
+        </div>
+        
+        <!-- Forecast Settings Tab -->
+        <div class="tab-content" id="forecast-tab">
+            <div class="form-group">
+                <label class="control-label" data-i18n="API_TYPE"></label>
+                <select class="form-control" id="apiType">
+                    <option value="hourly" data-i18n="API_HOURLY"></option>
+                    <option value="daily" data-i18n="API_DAILY"></option>
+                </select>
+            </div>
+            
+            <div class="form-group">
+                <label class="control-label" data-i18n="START_DAY"></label>
+                <input type="number" class="form-control" id="startDay" min="-2" max="6">
+            </div>
+            
+            <div class="form-group">
+                <label class="control-label" data-i18n="END_DAY"></label>
+                <input type="number" class="form-control" id="endDay" min="-2" max="6">
+            </div>
+            
+            <div class="form-group">
+                <label class="control-label" data-i18n="UPDATE_FREQUENCY"></label>
+                <input type="number" class="form-control" id="updateEveryXHour" min="0" max="24">
+                <p class="help-block" data-i18n="UPDATE_FREQUENCY_HELP"></p>
+            </div>
+        </div>
+        
+        <!-- Advanced Settings Tab -->
+        <div class="tab-content" id="advanced-tab">
+            <div class="form-group">
+                <label class="control-label" data-i18n="DEFAULT_API_TIME"></label>
+                <input type="number" class="form-control" id="defaultApiTime" min="0" max="86399">
+                <p class="help-block" data-i18n="DEFAULT_API_TIME_HELP"></p>
+            </div>
+            
+            <div class="form-group">
+                <label class="control-label" data-i18n="MAX_RETRIES"></label>
+                <input type="number" class="form-control" id="maxRetries" min="0" max="10">
+            </div>
+            
+            <div class="form-group">
+                <label class="control-label" data-i18n="RETRY_DELAY"></label>
+                <input type="number" class="form-control" id="retryDelay" min="1000" max="30000">
+            </div>
+            
+            <div class="form-group">
+                <label class="control-label" data-i18n="CACHE_TTL"></label>
+                <input type="number" class="form-control" id="cacheTTL" min="60000" max="86400000">
+            </div>
+            
+            <div class="form-group">
+                <label class="control-label" data-i18n="REQUEST_TIMEOUT"></label>
+                <input type="number" class="form-control" id="requestTimeout" min="1000" max="60000">
+            </div>
+        </div>
+        
+        <div class="form-group">
+            <button type="button" class="btn btn-primary" id="saveButton" data-i18n="SAVE_SETTINGS"></button>
+            <span id="message" style="margin-left: 15px; color: green;"></span>
+        </div>
+    </form>
+
+    <script>
+        $(function() {
+            // Apply translations
+            $.each(i18n, function(key, value) {
+                $('[data-i18n="' + key + '"]').text(value);
+                $('[data-i18n-placeholder="' + key + '"]').attr('placeholder', value);
+            });
+            
+            // Tab handling
+            $('.tab-button').click(function() {
+                $('.tab-button').removeClass('active');
+                $(this).addClass('active');
+                $('.tab-content').removeClass('active');
+                $('#' + $(this).data('tab') + '-tab').addClass('active');
+            });
+            
+            // Load settings
+            loadSettings();
+            
+            // Save button
+            $('#saveButton').click(function() {
+                saveSettings();
+                $('#message').text(i18n.SETTINGS_SAVED).fadeIn().delay(2000).fadeOut();
+            });
+        });
+        
+        function loadSettings() {
+            getAdapterConfig(function(config) {
+                for (var key in config) {
+                    if ($('#' + key).length) {
+                        $('#' + key).val(config[key]);
+                    }
+                }
+            });
+        }
+        
+        function saveSettings() {
+            var config = {
+                accessToken: $('#accessToken').val(),
+                inverterId: parseInt($('#inverterId').val()) || 0,
+                item: $('#item').val(),
+                project: $('#project').val(),
+                apiType: $('#apiType').val(),
+                startDay: parseInt($('#startDay').val()) || -2,
+                endDay: parseInt($('#endDay').val()) || 3,
+                updateEveryXHour: parseInt($('#updateEveryXHour').val()) || 2,
+                defaultApiTime: parseInt($('#defaultApiTime').val()) || 2133,
+                maxRetries: parseInt($('#maxRetries').val()) || 3,
+                retryDelay: parseInt($('#retryDelay').val()) || 5000,
+                cacheTTL: parseInt($('#cacheTTL').val()) || 300000,
+                requestTimeout: parseInt($('#requestTimeout').val()) || 15000
+            };
+            
+            saveAdapterConfig(config);
+        }
+    </script>
+</body>
+</html>

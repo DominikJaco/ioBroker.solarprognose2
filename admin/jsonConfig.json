@@ -1,0 +1,146 @@
+{
+  "type": "tabs",
+  "items": [
+    {
+      "title": "API_SETTINGS",
+      "items": [
+        {
+          "type": "text",
+          "label": "ACCESS_TOKEN",
+          "id": "accessToken",
+          "password": true,
+          "required": true,
+          "help": "ACCESS_TOKEN_HELP"
+        },
+        {
+          "type": "number",
+          "label": "INVERTER_ID",
+          "id": "inverterId",
+          "min": 1,
+          "required": true
+        },
+        {
+          "type": "select",
+          "label": "ITEM_TYPE",
+          "id": "item",
+          "options": [
+            {
+              "value": "inverter",
+              "label": "ITEM_INVERTER"
+            },
+            {
+              "value": "plant",
+              "label": "ITEM_PLANT"
+            },
+            {
+              "value": "location",
+              "label": "ITEM_LOCATION"
+            }
+          ],
+          "default": "inverter"
+        },
+        {
+          "type": "text",
+          "label": "PROJECT_INFO",
+          "id": "project",
+          "required": true
+        }
+      ]
+    },
+    {
+      "title": "FORECAST_SETTINGS",
+      "items": [
+        {
+          "type": "select",
+          "label": "API_TYPE",
+          "id": "apiType",
+          "options": [
+            {
+              "value": "hourly",
+              "label": "API_HOURLY"
+            },
+            {
+              "value": "daily",
+              "label": "API_DAILY"
+            }
+          ],
+          "default": "hourly"
+        },
+        {
+          "type": "number",
+          "label": "START_DAY",
+          "id": "startDay",
+          "min": -2,
+          "max": 6,
+          "default": -2
+        },
+        {
+          "type": "number",
+          "label": "END_DAY",
+          "id": "endDay",
+          "min": -2,
+          "max": 6,
+          "default": 3
+        },
+        {
+          "type": "number",
+          "label": "UPDATE_FREQUENCY",
+          "id": "updateEveryXHour",
+          "min": 0,
+          "max": 24,
+          "default": 2,
+          "help": "UPDATE_FREQUENCY_HELP"
+        }
+      ]
+    },
+    {
+      "title": "ADVANCED_SETTINGS",
+      "items": [
+        {
+          "type": "number",
+          "label": "DEFAULT_API_TIME",
+          "id": "defaultApiTime",
+          "min": 0,
+          "max": 86399,
+          "default": 2133,
+          "help": "DEFAULT_API_TIME_HELP"
+        },
+        {
+          "type": "number",
+          "label": "MAX_RETRIES",
+          "id": "maxRetries",
+          "min": 0,
+          "max": 10,
+          "default": 3
+        },
+        {
+          "type": "number",
+          "label": "RETRY_DELAY",
+          "id": "retryDelay",
+          "min": 1000,
+          "max": 30000,
+          "default": 5000,
+          "suffix": "ms"
+        },
+        {
+          "type": "number",
+          "label": "CACHE_TTL",
+          "id": "cacheTTL",
+          "min": 60000,
+          "max": 86400000,
+          "default": 300000,
+          "suffix": "ms"
+        },
+        {
+          "type": "number",
+          "label": "REQUEST_TIMEOUT",
+          "id": "requestTimeout",
+          "min": 1000,
+          "max": 60000,
+          "default": 15000,
+          "suffix": "ms"
+        }
+      ]
+    }
+  ]
+}
