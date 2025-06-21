@@ -9,8 +9,8 @@
       "licensor": {
         "name": "DominikJaco",
         "email": "your@email.com"
-      },
-    "title": "SolarPrognose",
+      }
+    },
     "titleLang": {
       "en": "SolarPrognose",
       "de": "SolarPrognose",
@@ -26,109 +26,108 @@
     },
     "desc": {
       "en": "Fetches solar forecasts from solarprognose.de",
-      "de": "Gebühren Solarprognose von solarprognose.de",
-      "ru": "Солнечные прогнозы от Solarprognose.de",
-      "pt": "Fetches previsões solares de solarprognose.de",
-      "nl": "Fetches zonnevoorspellingen van zonneprognose.de",
-      "fr": "Fetches prévisions solaires de solarprognose.de",
-      "it": "Fetches previsioni solari da solarprognose.de",
-      "es": "Pronósticos solares de Solarprognose.de",
-      "pl": "Fetches prognozy słoneczne z solarprognose.de",
-      "uk": "Fetches сонячні прогнози від solarprognose.de",
-      "zh-cn": "从太阳预测中获取太阳预报.de"
+      "de": "Holt Solarprognosen von solarprognose.de",
+      "ru": "Получает солнечные прогнозы с solarprognose.de",
+      "pt": "Obtém previsões solares de solarprognose.de",
+      "nl": "Haalt zonnevoorspellingen op van solarprognose.de",
+      "fr": "Récupère les prévisions solaires de solarprognose.de",
+      "it": "Recupera previsioni solari da solarprognose.de",
+      "es": "Obtiene pronósticos solares de solarprognose.de",
+      "pl": "Pobiera prognozy słoneczne z solarprognose.de",
+      "uk": "Отримує сонячні прогнози з solarprognose.de",
+      "zh-cn": "从 solarprognose.de 获取太阳能预测"
     },
     "news": {
-  "0.0.3": {
-    "en": "Added comprehensive testing framework with Mocha/Chai and GitHub Actions CI",
-    "de": "Umfangreiches Test-Framework mit Mocha/Chai und GitHub Actions CI hinzugefügt",
-    "ru": "Добавлена комплексная тестовая среда с Mocha/Chai и GitHub Actions CI",
-    "pt": "Adicionada estrutura de teste abrangente com Mocha/Chai e GitHub Actions CI",
-    "nl": "Uitgebreid testraamwerk met Mocha/Chai en GitHub Actions CI toegevoegd",
-    "fr": "Ajout d'un cadre de test complet avec Mocha/Chai et GitHub Actions CI",
-    "it": "Aggiunto framework di test completo con Mocha/Chai e GitHub Actions CI",
-    "es": "Se añadió un marco de pruebas integral con Mocha/Chai y GitHub Actions CI",
-    "pl": "Dodano kompleksowe framework testowy z Mocha/Chai i GitHub Actions CI",
-    "uk": "Додано комплексну тестову структуру з Mocha/Chai та GitHub Actions CI",
-    "zh-cn": "添加了包含 Mocha/Chai 和 GitHub Actions CI 的全面测试框架"
-  },
-  "0.0.2": {
-    "en": "Fixed validation issues, added API encryption and multi-language titles",
-    "de": "Validierungsprobleme behoben, API-Verschlüsselung und mehrsprachige Titel hinzugefügt",
-    "ru": "Исправлены проблемы с проверкой, добавлено шифрование API и многоязычные заголовки",
-    "pt": "Problemas de validação corrigidos, criptografia API e títulos multilíngues adicionados",
-    "nl": "Validatieproblemen opgelost, API-codering en meertalige titels toegevoegd",
-    "fr": "Problèmes de validation corrigés, chiffrement API et titres multilingues ajoutés",
-    "it": "Problemi di convalida risolti, crittografia API e titoli multilingue aggiunti",
-    "es": "Problemas de validación corregidos, encriptación API y títulos multilingües añadidos",
-    "pl": "Naprawiono problemy z walidacją, dodano szyfrowanie API i wielojęzyczne tytuły",
-    "uk": "Виправлено проблеми з перевіркою, додано шифрування API та багатомовні заголовки",
-    "zh-cn": "修复了验证问题，添加了 API 加密和多语言标题"
-  },
-  "0.0.1": {
-    "en": "Initial release with solar forecast functionality and VIS widget",
-    "de": "Erstveröffentlichung mit Solarprognose-Funktionalität und VIS-Widget",
-    "ru": "Первоначальный выпуск с функцией прогноза солнечной энергии и виджетом VIS",
-    "pt": "Lançamento inicial com funcionalidade de previsão solar e widget VIS",
-    "nl": "Eerste release met zonne-energie prognose functionaliteit en VIS-widget",
-    "fr": "Version initiale avec fonctionnalité de prévision solaire et widget VIS",
-    "it": "Rilascio iniziale con funzionalità di previsione solare e widget VIS",
-    "es": "Lanzamiento inicial con funcionalidad de pronóstico solar y widget VIS",
-    "pl": "Pierwsze wydanie z funkcją prognozy słonecznej i widżetem VIS",
-    "uk": "Початковий випуск з функцією прогнозу сонячної енергії та віджетом VIS",
-    "zh-cn": "初始版本包含太阳能预测功能和 VIS 小部件"
-  }
-},
-    "extIcon": "https://raw.githubusercontent.com/DominikJaco/ioBroker.solarprognose2/main/admin/solarprognose.png"
-  },
-    "platform": "Javascript/Node.js",
-    "icon": "solarprognose.png",
-    "extIcon": "https://raw.githubusercontent.com/DominikJaco/ioBroker.solarprognose2/main/admin/solarprognose.png",
-    "mode": "daemon",
-    "authors": ["DominikJaco <your@email.com>"],
-    "news": {
+      "0.0.3": {
+        "en": "Added comprehensive testing framework with Mocha/Chai and GitHub Actions CI",
+        "de": "Umfangreiches Test-Framework mit Mocha/Chai und GitHub Actions CI hinzugefügt",
+        "ru": "Добавлена комплексная тестовая среда с Mocha/Chai и GitHub Actions CI",
+        "pt": "Adicionada estrutura de teste abrangente com Mocha/Chai e GitHub Actions CI",
+        "nl": "Uitgebreid testraamwerk met Mocha/Chai en GitHub Actions CI toegevoegd",
+        "fr": "Ajout d'un cadre de test complet avec Mocha/Chai et GitHub Actions CI",
+        "it": "Aggiunto framework di test completo con Mocha/Chai e GitHub Actions CI",
+        "es": "Se añadió un marco de pruebas integral con Mocha/Chai y GitHub Actions CI",
+        "pl": "Dodano kompleksowe framework testowy z Mocha/Chai i GitHub Actions CI",
+        "uk": "Додано комплексну тестову структуру з Mocha/Chai та GitHub Actions CI",
+        "zh-cn": "添加了包含 Mocha/Chai 和 GitHub Actions CI 的全面测试框架"
+      },
+      "0.0.2": {
+        "en": "Fixed validation issues, added API encryption and multi-language titles",
+        "de": "Validierungsprobleme behoben, API-Verschlüsselung und mehrsprachige Titel hinzugefügt",
+        "ru": "Исправлены проблемы с проверкой, добавлено шифрование API и многоязычные заголовки",
+        "pt": "Problemas de validação corrigidos, criptografia API e títulos multilíngues adicionados",
+        "nl": "Validatieproblemen opgelost, API-codering en meertalige titels toegevoegd",
+        "fr": "Problèmes de validation corrigés, chiffrement API et titres multilingues ajoutés",
+        "it": "Problemi di convalida risolti, crittografia API e titoli multilingue aggiunti",
+        "es": "Problemas de validación corregidos, encriptación API y títulos multilingües añadidos",
+        "pl": "Naprawiono problemy z walidacją, dodano szyfrowanie API i wielojęzyczne tytuły",
+        "uk": "Виправлено проблеми з перевіркою, додано шифрування API та багатомовні заголовки",
+        "zh-cn": "修复了验证问题，添加了 API 加密和多语言标题"
+      },
       "0.0.1": {
-        "en": "Initial release",
-        "de": "Erstveröffentlichung"
+        "en": "Initial release with solar forecast functionality and VIS widget",
+        "de": "Erstveröffentlichung mit Solarprognose-Funktionalität und VIS-Widget",
+        "ru": "Первоначальный выпуск с функцией прогноза солнечной энергии и виджетом VIS",
+        "pt": "Lançamento inicial com funcionalidade de previsão solar e widget VIS",
+        "nl": "Eerste release met zonne-energie prognose functionaliteit en VIS-widget",
+        "fr": "Version initiale avec fonctionnalité de prévision solaire et widget VIS",
+        "it": "Rilascio iniziale con funzionalità di previsione solare e widget VIS",
+        "es": "Lanzamiento inicial con funcionalidad de pronóstico solar y widget VIS",
+        "pl": "Pierwsze wydanie z funkcją prognozy słonecznej i widżetem VIS",
+        "uk": "Початковий випуск з функцією прогнозу сонячної енергії та віджетом VIS",
+        "zh-cn": "初始版本包含太阳能预测功能和 VIS 小部件"
       }
     },
-    "enabled": true,
-    "messagebox": true,
-    "materialize": true,
-    "keywords": [
-      "solar",
-      "forecast",
-      "energy",
-      "photovoltaic"
-    ],
-    "languages": [
-      "en",
-      "de",
-      "ru",
-      "pt",
-      "nl",
-      "fr",
-      "it",
-      "es",
-      "pl",
-      "uk",
-      "zh-cn"
-    ],
-    "restartAdapters": [],
-    "adminUI": {
-      "config": "json"
-    },
-    "dataSource": "poll",
-    "connectionType": "cloud",
-    "compact": true,
-    "tier": 1,
-    "dependencies": [
-      {
-       "js-controller": ">=5.0.19"
-      }
-    ],
-    "protectedNative": ["apiKey"],
-    "encryptedNative": ["apiKey"]
+    "extIcon": "https://raw.githubusercontent.com/DominikJaco/ioBroker.solarprognose2/main/admin/solarprognose.png",
+    "type": "energy"
   },
+  "platform": "Javascript/Node.js",
+  "icon": "solarprognose.png",
+  "mode": "daemon",
+  "authors": [
+    "DominikJaco <your@email.com>"
+  ],
+  "enabled": true,
+  "messagebox": true,
+  "materialize": true,
+  "keywords": [
+    "solar",
+    "forecast",
+    "energy",
+    "photovoltaic"
+  ],
+  "languages": [
+    "en",
+    "de",
+    "ru",
+    "pt",
+    "nl",
+    "fr",
+    "it",
+    "es",
+    "pl",
+    "uk",
+    "zh-cn"
+  ],
+  "restartAdapters": [],
+  "adminUI": {
+    "config": "json"
+  },
+  "dataSource": "poll",
+  "connectionType": "cloud",
+  "compact": true,
+  "tier": 1,
+  "dependencies": [
+    {
+      "js-controller": ">=5.0.19"
+    }
+  ],
+  "protectedNative": [
+    "apiKey"
+  ],
+  "encryptedNative": [
+    "apiKey"
+  ],
   "native": {
     "accessToken": "",
     "inverterId": 0,
@@ -144,7 +143,6 @@
     "cacheTTL": 300000,
     "requestTimeout": 15000
   },
-
   "instanceObjects": [
     {
       "_id": "info",
