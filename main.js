@@ -1,115 +1,194 @@
-const utils = require('@iobroker/adapter-core');
-const axios = require('axios');
-const SolarUtils = require('./lib/utils');
+'use strict';
 
-class SolarPrognose extends utils.Adapter {
+const utils = require('@iobroker/adapter-core');
+const got = require('got');
+const moment = require('moment');
+
+class Solarprognose2 extends utils.Adapter {
+
     constructor(options) {
         super({
             ...options,
-            name: 'solarprognose'
+            name: 'solarprognose2',
         });
-        
         this.on('ready', this.onReady.bind(this));
         this.on('unload', this.onUnload.bind(this));
-        this.on('stateChange', this.onStateChange.bind(this));
-        
-        this.timers = {};
-        this.config = {};
-        this.systemLang = 'en';
+        this.activeHours = [];
+        this.apiTime = 0;
+        this.instance = 0;
     }
 
     async onReady() {
         try {
-            this.systemLang = this.systemConfig.common.language;
-            this.config = this.config.native;
+            this.instance = this.instance;
+            await this.validateConfig();
+            await this.createStates();
+            await this.initializeSettings();
             
-            // Set connection state
-            await this.setStateAsync('info.connection', true, true);
+            const apiTimeState = await this.getStateAsync('settings.preferredApiTime');
+            this.apiTime = apiTimeState?.val || this.config.defaultApiTime;
             
-            // Initialize objects
-            await this.initializeObjects();
-            
-            // Schedule first update
-            await this.scheduleFirstUpdate();
-            
-            this.log.info('Adapter initialized');
+            await this.preciseTiming();
         } catch (error) {
             this.log.error(`Initialization failed: ${error.message}`);
-            await this.setStateAsync('info.connection', false, true);
+            this.stop();
         }
     }
 
-    async initializeObjects() {
-        // Create forecast structure
-        await this.setObjectNotExistsAsync('forecasts', {
-            type: 'channel',
-            common: {
-                name: 'Solar Forecasts',
-                desc: 'Contains solar forecast data'
-            },
-            native: {}
-        });
-        
-        await this.setObjectNotExistsAsync('forecasts.arrays', {
-            type: 'channel',
-            common: {
-                name: 'Forecast Arrays',
-                desc: 'Contains forecast data as JSON arrays'
-            },
-            native: {}
-        });
+    // ... (validateConfig, createStates, initializeSettings, getDayName bleiben unverändert)
 
-        // Create day channels
-        for (let day = this.config.startDay; day <= this.config.endDay; day++) {
-            const dayName = SolarUtils.getDayName(day, this.systemLang);
+    async preciseTiming() {
+        const now = moment.utc();
+        const apiMinutes = Math.floor(this.apiTime / 60);
+        const apiSeconds = this.apiTime % 60;
+        
+        // Sekunde nach der vollen Stunde für den Vorlauf
+        const leadSeconds = 0;  // Genaue volle Stunde
+        const leadMinutes = apiMinutes;
+        
+        // Nächster Vorlauf-Zeitpunkt (volle Stunde + API-Minuten)
+        let nextLeadTime = moment.utc(now)
+            .set({ minute: leadMinutes, second: leadSeconds, millisecond: 0 });
             
-            // Day channel
-            await this.setObjectNotExistsAsync(`forecasts.${dayName}`, {
-                type: 'channel',
-                common: { name: dayName },
-                native: {}
-            });
+        if (nextLeadTime.isBefore(now)) {
+            nextLeadTime.add(1, 'hours');
+        }
+        
+        // Wartezeit bis zum Vorlauf
+        const waitTime = nextLeadTime.diff(now);
+        
+        this.log.info(`Current time: ${now.format('HH:mm:ss')} UTC`);
+        this.log.info(`Lead time: ${nextLeadTime.format('HH:mm:ss')} UTC`);
+        this.log.info(`Waiting ${waitTime}ms for lead time`);
+        
+        if (waitTime > 0) {
+            await new Promise(resolve => setTimeout(resolve, waitTime));
+        }
+        
+        // Jetzt sind wir an der vollen Stunde + API-Minuten
+        this.log.info('Starting preparation for API call');
+        await this.prepareForApiCall();
+        
+        // Warte auf die genaue API-Sekunde
+        const targetSeconds = apiSeconds;
+        const currentSeconds = moment.utc().seconds();
+        let secondsToWait = targetSeconds - currentSeconds;
+        
+        if (secondsToWait < 0) {
+            secondsToWait += 60;
+        }
+        
+        if (secondsToWait > 0) {
+            this.log.info(`Waiting ${secondsToWait} seconds for API second`);
+            await new Promise(resolve => setTimeout(resolve, secondsToWait * 1000));
+        }
+        
+        const currentTime = moment.utc().format('HH:mm:ss.SSS');
+        this.log.info(`Executing API call at ${currentTime} UTC`);
+        await this.executeUpdate();
+    }
+
+    async prepareForApiCall() {
+        await this.setStateAsync('info.connection', false, true);
+        this.log.info('System prepared for API call');
+    }
+
+    async executeUpdate() {
+        const currentHour = moment.utc().hour();
+        
+        if (currentHour === 1) {
+            await this.fullUpdate();
+        } else {
+            await this.partialUpdate();
+        }
+        
+        await this.updateSchedule();
+        this.stop();
+    }
+
+    async fullUpdate() {
+        this.log.info('Starting FULL update');
+        
+        try {
+            const data = await this.fetchForecastData();
+            await this.processForecastData(data);
             
-            // Hour states
-            for (let hour = 0; hour < 24; hour++) {
-                const hh = hour.toString().padStart(2, '0');
-                await this.setObjectNotExistsAsync(`forecasts.${dayName}.${hh}00`, {
-                    type: 'state',
-                    common: {
-                        name: `${hh}:00`,
-                        type: 'number',
-                        role: 'value',
-                        unit: 'kW',
-                        read: true,
-                        write: false
-                    },
-                    native: {}
+            if (data.preferredNextApiRequestAt?.secondOfHour) {
+                this.apiTime = data.preferredNextApiRequestAt.secondOfHour;
+                await this.setStateAsync('settings.preferredApiTime', {
+                    val: this.apiTime,
+                    ack: true
                 });
             }
             
-            // Array state
-            await this.setObjectNotExistsAsync(`forecasts.arrays.${dayName}`, {
-                type: 'state',
-                common: {
-                    name: `${dayName} Forecast Array`,
-                    type: 'string',
-                    role: 'value',
-                    read: true,
-                    write: false,
-                    def: JSON.stringify(Array(24).fill(0))
-                },
-                native: {}
-            });
+            await this.setStateAsync('info.connection', true, true);
+        } catch (error) {
+            this.log.error(`Full update failed: ${error.message}`);
         }
     }
 
-    async fetchForecast() {
+    async partialUpdate() {
+        this.log.info('Starting PARTIAL update');
+        
+        try {
+            const data = await this.fetchForecastData();
+            await this.processForecastData(data, true);
+            await this.setStateAsync('info.connection', true, true);
+        } catch (error) {
+            this.log.error(`Partial update failed: ${error.message}`);
+        }
+    }
+
+    async processForecastData(data, partial = false) {
+        let todayTotal = 0;
+        
+        for (const [epoch, values] of Object.entries(data.data)) {
+            if (!Array.isArray(values) || values.length < 2) continue;
+            
+            const [currentPower, cumulativeEnergy] = values;
+            const time = moment.unix(epoch).utc();
+            const dayOffset = time.diff(moment.utc().startOf('day'), 'days');
+            const dayName = this.getDayName(dayOffset);
+            const hour = time.hour();
+            
+            if (partial && dayOffset !== 0) continue;
+            
+            if (dayOffset === 0) {
+                if (!this.activeHours.includes(hour)) {
+                    this.activeHours.push(hour);
+                }
+                todayTotal = cumulativeEnergy;
+            }
+            
+            await this.setStateAsync(`forecast.${dayName}.${hour.toString().padStart(2, '0')}_00`, {
+                val: currentPower,
+                ack: true
+            });
+            
+            await this.setStateAsync(`forecast.${dayName}.total`, {
+                val: cumulativeEnergy,
+                ack: true
+            });
+        }
+        
+        if (!partial) {
+            await this.setStateAsync('forecast.today.total', {
+                val: todayTotal,
+                ack: true
+            });
+        }
+        
+        await this.setStateAsync('settings.lastUpdate', {
+            val: moment.utc().format('YYYY-MM-DD HH:mm:ss') + ' UTC',
+            ack: true
+        });
+    }
+
+    async fetchForecastData() {
         const params = new URLSearchParams({
             'access-token': this.config.accessToken,
-            'project': this.config.project,
             'item': this.config.item,
             'id': this.config.inverterId,
-            'type': this.config.apiType,
             '_format': 'json',
             'start_day': this.config.startDay,
             'end_day': this.config.endDay
@@ -117,144 +196,65 @@ class SolarPrognose extends utils.Adapter {
         
         const url = `https://www.solarprognose.de/web/solarprediction/api/v1?${params}`;
         
-        const response = await axios.get(url, {
-            timeout: this.config.requestTimeout,
-            validateStatus: (status) => status < 500
+        const response = await got(url, {
+            timeout: 20000,
+            retry: 0,
+            headers: { 
+                'User-Agent': 'ioBroker SolarPrognose2 Adapter',
+                'Accept': 'application/json'
+            }
         });
         
-        if (response.status !== 200) {
-            throw new Error(`HTTP error ${response.status}`);
-        }
-        
-        if (response.data.status !== 0) {
-            throw new Error(`API error ${response.data.status}`);
-        }
-        
-        return response.data;
+        return JSON.parse(response.body);
     }
 
-    async processDay(data, dayOffset) {
-        const dayName = SolarUtils.getDayName(dayOffset, this.systemLang);
-        const hourlyArray = Array(24).fill(0);
-        let dayTotal = 0;
-        const isHourly = this.config.apiType === 'hourly';
-
-        if (isHourly) {
-            // Process hourly data
-            const timestamps = Object.keys(data.data)
-                .map(ts => parseInt(ts))
-                .sort((a, b) => a - b);
-            
-            for (const epoch of timestamps) {
-                const values = data.data[epoch];
-                const date = new Date(epoch * 1000);
-                const hour = date.getHours();
-                hourlyArray[hour] = values[0]; // currentPower
-                dayTotal = values[1]; // cumulativeEnergy
-            }
-        } else {
-            // Process daily data
-            const date = new Date();
-            date.setDate(date.getDate() + dayOffset);
-            const dateKey = `${date.getFullYear()}${(date.getMonth()+1).toString().padStart(2,'0')}${date.getDate().toString().padStart(2,'0')}`;
-            dayTotal = data.data[dateKey] || 0;
-            const avgHourly = dayTotal / 24;
-            hourlyArray.fill(avgHourly);
-        }
-        
-        // Update states
-        const stateUpdates = [];
-        
-        for (let hour = 0; hour < 24; hour++) {
-            const hh = hour.toString().padStart(2, '0');
-            stateUpdates.push(
-                this.setStateAsync(`forecasts.${dayName}.${hh}00`, hourlyArray[hour], true)
-            );
-        }
-        
-        stateUpdates.push(
-            this.setStateAsync(`forecasts.arrays.${dayName}`, JSON.stringify(hourlyArray), true)
-        );
-        
-        await Promise.all(stateUpdates);
-        
-        return {
-            preferredApiTime: data.preferredNextApiRequestAt?.secondOfHour
-        };
-    }
-
-    async updateForecast() {
+    async updateSchedule() {
         try {
-            const data = await this.fetchForecast();
-            const dayProcessing = [];
+            const apiMinutes = Math.floor(this.apiTime / 60);
+            const apiSeconds = this.apiTime % 60;
             
-            for (let day = this.config.startDay; day <= this.config.endDay; day++) {
-                dayProcessing.push(this.processDay(data, day));
+            // 1. Tägliches Vollupdate (01:XX:XX UTC)
+            const fullUpdateCron = `${apiSeconds} ${apiMinutes} 1 * * *`;
+            
+            // 2. Teilupdates - nur Minutenkomponente
+            const partialCrons = [];
+            if (this.config.updateEveryXHour > 0 && this.activeHours.length > 0) {
+                const sortedHours = [...this.activeHours].sort((a, b) => a - b);
+                const updateHours = [];
+                
+                for (let i = 0; i < sortedHours.length; i += this.config.updateEveryXHour) {
+                    updateHours.push(sortedHours[i]);
+                }
+                
+                if (!updateHours.includes(sortedHours[0])) {
+                    updateHours.unshift(sortedHours[0]);
+                }
+                
+                // Für jede Stunde: Starte zur vollen Stunde + API-Minuten
+                updateHours.forEach(hour => {
+                    partialCrons.push(`${apiSeconds} ${apiMinutes} ${hour} * * *`);
+                });
             }
             
-            await Promise.all(dayProcessing);
-            this.log.info('Forecast updated successfully');
-            return true;
+            const scheduleString = [fullUpdateCron, ...partialCrons].join(';');
+            
+            await this.extendObjectAsync(this.instance, {
+                common: { schedule: scheduleString }
+            });
+            
+            this.log.info(`Updated schedule: ${scheduleString}`);
         } catch (error) {
-            this.log.error(`Forecast update failed: ${error.message}`);
-            return false;
+            this.log.error(`Schedule update failed: ${error.message}`);
         }
-    }
-
-    async scheduleFirstUpdate() {
-        const now = new Date();
-        const utcSeconds = now.getUTCHours() * 3600 + now.getUTCMinutes() * 60 + now.getUTCSeconds();
-        let delaySeconds = this.config.defaultApiTime - utcSeconds;
-        if (delaySeconds < 0) delaySeconds += 86400;
-        
-        this.timers.firstUpdate = setTimeout(async () => {
-            const success = await this.updateForecast();
-            if (success) this.scheduleRecurring();
-        }, delaySeconds * 1000);
-        
-        this.log.info(`First update scheduled in ${delaySeconds} seconds`);
-    }
-
-    scheduleRecurring() {
-        // Clear existing timers
-        if (this.timers.daily) clearInterval(this.timers.daily);
-        if (this.timers.hourly) clearInterval(this.timers.hourly);
-        
-        // Daily update
-        this.timers.daily = setInterval(async () => {
-            await this.updateForecast();
-        }, 24 * 60 * 60 * 1000); // 24 hours
-        
-        // Hourly updates
-        if (this.config.updateEveryXHour > 0) {
-            this.timers.hourly = setInterval(async () => {
-                await this.updateForecast();
-            }, this.config.updateEveryXHour * 60 * 60 * 1000);
-        }
-        
-        this.log.info('Recurring updates scheduled');
     }
 
     onUnload(callback) {
-        try {
-            Object.values(this.timers).forEach(timer => clearTimeout(timer));
-            this.setState('info.connection', false, true);
-            this.log.info('Adapter stopped');
-            callback();
-        } catch (error) {
-            callback();
-        }
-    }
-
-    onStateChange(id, state) {
-        if (state && !state.ack) {
-            this.log.debug(`State ${id} changed: ${state.val}`);
-        }
+        callback();
     }
 }
 
-function startAdapter(options) {
-    return new SolarPrognose(options);
+if (module.parent) {
+    module.exports = (options) => new Solarprognose2(options);
+} else {
+    new Solarprognose2();
 }
-
-module.exports = startAdapter;
