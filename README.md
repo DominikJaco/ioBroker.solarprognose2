@@ -117,11 +117,15 @@ Bei Problemen oder Fragen:
 
 ## Changelog
 [Siehe CHANGELOG.md](CHANGELOG.md)
+# [0.0.10] - 2025-06-22
+### Breaking Changes
+- **Betriebsmodus-Wechsel**: Der Adapter läuft jetzt im `schedule`-Modus statt als Daemon
+- **Startverhalten**: Der Adapter wird nur noch zu Update-Zeiten gestartet und beendet sich danach automatisch
 
 ## Entwickler
 - DominikJaco ([GitHub](https://github.com/DominikJaco))
 
-## Lizenz
+## License
 MIT License
 
 Copyright (c) 2025 DominikJaco <dominikjaco@gmail.com>

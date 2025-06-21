@@ -38,13 +38,9 @@
       "zh-cn": "从 solarprognose.de 获取太阳能预测"
     },
     "news": {
-      "0.0.7": {
-        "en": "Fixed issues5",
-        "de": "Umstellung auf solarprognose.de API"
-      },
-      "0.0.6": {
-        "en": "Fixed issues4",
-        "de": "probleme behoben4"
+      "0.0.10": {
+        "en": "Fixed issues6",
+        "de": "anpassung auf schedule mode"
       },
       "0.0.5": {
         "en": "Fixed issues3",
