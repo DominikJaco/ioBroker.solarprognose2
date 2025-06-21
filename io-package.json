@@ -1,0 +1,84 @@
+{
+  "common": {
+    "name": "solarprognose",
+    "version": "1.0.0",
+    "title": "SolarPrognose",
+    "desc": {
+      "en": "Fetches solar forecasts from solarprognose.de",
+      "de": "Liest Solarprognosen von solarprognose.de"
+    },
+    "license": "MIT",
+    "platform": "Javascript/Node.js",
+    "icon": "solarprognose.png",
+    "enabled": true,
+    "messagebox": true,
+    "materialize": true,
+    "keywords": [
+      "solar",
+      "forecast",
+      "energy",
+      "photovoltaic"
+    ],
+    "type": "weather",
+    "languages": [
+      "en",
+      "de",
+      "ru",
+      "pt",
+      "nl",
+      "fr",
+      "it",
+      "es",
+      "pl",
+      "uk",
+      "zh-cn"
+    ],
+    "restartAdapters": [],
+    "adminUI": {
+      "config": "json"
+    },
+    "dataSource": "poll",
+    "dependencies": [
+      {
+        "js-controller": ">=3.0.0"
+      }
+    ]
+  },
+  "native": {
+    "accessToken": "",
+    "inverterId": 0,
+    "item": "inverter",
+    "project": "ioBroker Integration",
+    "startDay": -2,
+    "endDay": 3,
+    "defaultApiTime": 2133,
+    "updateEveryXHour": 2,
+    "apiType": "hourly",
+    "maxRetries": 3,
+    "retryDelay": 5000,
+    "cacheTTL": 300000,
+    "requestTimeout": 15000
+  },
+  "instanceObjects": [
+    {
+      "_id": "info",
+      "type": "channel",
+      "common": {
+        "name": "Information",
+        "desc": "Adapter information"
+      }
+    },
+    {
+      "_id": "info.connection",
+      "type": "state",
+      "common": {
+        "name": "Connection status",
+        "type": "boolean",
+        "role": "indicator.connected",
+        "read": true,
+        "write": false,
+        "def": false
+      }
+    }
+  ]
+}
