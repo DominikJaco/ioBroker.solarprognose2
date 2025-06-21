@@ -2,12 +2,6 @@
   "common": {
     "name": "solarprognose2",
     "version": "0.0.3",
-    "authors": [
-      {
-        "name": "DominikJaco",
-        "email": "your@email.com"
-      }
-    ],
     "licenseInformation": {
       "type": "free",
       "license": "MIT",
@@ -85,14 +79,18 @@
       }
     },
     "extIcon": "https://raw.githubusercontent.com/DominikJaco/ioBroker.solarprognose2/main/admin/solarprognose.png",
-    "type": "energy"
+    "type": "energy",
+    "authors": [
+      {
+        "name": "DominikJaco",
+        "email": "your@email.com"
+      }
+    ],
+    "icon": "solarprognose.png",
+    "adminUI": "json"
   },
   "platform": "Javascript/Node.js",
-  "icon": "solarprognose.png",
   "mode": "daemon",
-  "authors": [
-    "DominikJaco <your@email.com>"
-  ],
   "enabled": true,
   "messagebox": true,
   "materialize": true,
@@ -116,7 +114,6 @@
     "zh-cn"
   ],
   "restartAdapters": [],
-  "adminUI":  "json",
   "dataSource": "poll",
   "connectionType": "cloud",
   "compact": true,
