@@ -1,31 +1,45 @@
 // admin/src/index.tsx
-import { JsonConfigComponent, loadTranslations } from "@iobroker/adapter-react-v5";
-import { Theme, ThemeType } from "@iobroker/adapter-react-v5/types";
-import * as React from "react";
+import React from "react";
+import { SettingsPage, Theme } from "@iobroker/adapter-react-v5";
 
-// Laden der Übersetzungen
-const translations = {
-  de: require("../i18n/de.json"),
-  en: require("../i18n/en.json"),
-  ru: require("../i18n/ru.json"),
-};
+// Importiere die Übersetzungen
+import de from "../i18n/de.json";
+import en from "../i18n/en.json";
+import es from "../i18n/es.json";
+import fr from "../i18n/fr.json";
+import it from "../i18n/it.json";
+import nl from "../i18n/nl.json";
+import pl from "../i18n/pl.json";
+import pt from "../i18n/pt.json";
+import ru from "../i18n/ru.json";
+import uk from "../i18n/uk.json";
+import zhCn from "../i18n/zh-cn.json";
 
-interface SettingsProps {
-  theme: ThemeType;
-}
+// Importiere die Konfiguration
+import config from "../jsonConfig.json";
 
-const SettingsPage: React.FC<SettingsProps> = ({ theme }) => {
+const AppSettings: React.FC<{ theme: "light" | "dark" }> = ({ theme }) => {
   return (
     <Theme theme={theme}>
-      <JsonConfigComponent
+      <SettingsPage
         adapter="solarprognose2"
-        translations={translations}
+        config={config}
+        translations={{
+          de,
+          en,
+          es,
+          fr,
+          it,
+          nl,
+          pl,
+          pt,
+          ru,
+          uk,
+          zhCn
+        }}
       />
     </Theme>
   );
 };
 
-// Initialisierung der Übersetzungen
-loadTranslations(translations);
-
-export default SettingsPage;
+export default AppSettings;
