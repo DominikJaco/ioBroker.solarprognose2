@@ -2,9 +2,9 @@
   "ADAPTER_CONFIG_TITLE": "SolarPrognose-Konfiguration",
   "API_SETTINGS_HEADER": "API-Einstellungen",
   "ACCESS_TOKEN_LABEL": "Zugriffstoken",
-  "ACCESS_TOKEN_HELP": "Ihr API-Zugriffstoken vom Solardatenanbieter",
+  "ACCESS_TOKEN_HELP": "Ihr API-Zugriffstoken von Solardatenprovider",
   "INVERTER_ID_LABEL": "Wechselrichter-ID",
-  "INVERTER_ID_HELP": "Eindeutige Kennung Ihres Items",
+  "INVERTER_ID_HELP": "Eindeutige ID Ihres Geräts",
   "ITEM_TYPE_LABEL": "Elementtyp",
   "ITEM_TYPE_HELP": "Art der abzurufenden Solardaten",
   "ITEM_TYPE_INVERTER": "Wechselrichter",
@@ -24,9 +24,9 @@
   "UPDATE_FREQUENCY_HELP": "Stunden zwischen Aktualisierungen (0 = deaktiviert)",
   "ADVANCED_SETTINGS_HEADER": "Erweiterte Einstellungen",
   "DEFAULT_API_TIME_LABEL": "Standard-API-Zeit",
-  "DEFAULT_API_TIME_HELP": "Standardzeit für API-Aufrufe in Sekunden",
+  "DEFAULT_API_TIME_HELP": "Standardzeit für API-Abrufe in Sekunden",
   "MAX_RETRIES_LABEL": "Maximale Wiederholungen",
   "RETRY_DELAY_LABEL": "Wiederholungsverzögerung",
-  "CACHE_TTL_LABEL": "Cache-Lebensdauer",
+  "CACHE_TTL_LABEL": "Cache-Gültigkeit",
   "REQUEST_TIMEOUT_LABEL": "Anfrage-Timeout"
 }
