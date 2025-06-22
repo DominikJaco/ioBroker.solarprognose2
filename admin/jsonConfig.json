@@ -6,12 +6,12 @@
       "items": [
         {
           "type": "header",
-          "text": "API_SETTINGS"
+          "text": "API_SETTINGS_HEADER"
         },
         {
           "type": "text",
           "name": "accessToken",
-          "label": "ACCESS_TOKEN",
+          "label": "ACCESS_TOKEN_LABEL",
           "id": "accessToken",
           "password": true,
           "required": true,
@@ -27,7 +27,7 @@
         {
           "type": "number",
           "name": "inverterId",
-          "label": "INVERTER_ID",
+          "label": "INVERTER_ID_LABEL",
           "id": "inverterId",
           "min": 1,
           "required": true,
@@ -43,20 +43,20 @@
         {
           "type": "select",
           "name": "item",
-          "label": "ITEM_TYPE",
+          "label": "ITEM_TYPE_LABEL",
           "id": "item",
           "options": [
             {
               "value": "inverter",
-              "label": "ITEM_INVERTER"
+              "label": "ITEM_TYPE_INVERTER"
             },
             {
               "value": "plant",
-              "label": "ITEM_PLANT"
+              "label": "ITEM_TYPE_PLANT"
             },
             {
               "value": "location",
-              "label": "ITEM_LOCATION"
+              "label": "ITEM_TYPE_LOCATION"
             }
           ],
           "default": "inverter",
@@ -72,7 +72,7 @@
         {
           "type": "text",
           "name": "project",
-          "label": "PROJECT_INFO",
+          "label": "PROJECT_INFO_LABEL",
           "id": "project",
           "required": true,
           "help": "PROJECT_INFO_HELP",
@@ -91,21 +91,21 @@
       "items": [
         {
           "type": "header",
-          "text": "FORECAST_SETTINGS"
+          "text": "FORECAST_SETTINGS_HEADER"
         },
         {
           "type": "select",
           "name": "apiType",
-          "label": "API_TYPE",
+          "label": "API_TYPE_LABEL",
           "id": "apiType",
           "options": [
             {
               "value": "hourly",
-              "label": "Hourly"
+              "label": "API_TYPE_HOURLY"
             },
             {
               "value": "daily",
-              "label": "Daily"
+              "label": "API_TYPE_DAILY"
             }
           ],
           "default": "hourly",
@@ -120,7 +120,7 @@
         {
           "type": "number",
           "name": "startDay",
-          "label": "START_DAY",
+          "label": "START_DAY_LABEL",
           "id": "startDay",
           "min": -2,
           "max": 6,
@@ -137,7 +137,7 @@
         {
           "type": "number",
           "name": "endDay",
-          "label": "END_DAY",
+          "label": "END_DAY_LABEL",
           "id": "endDay",
           "min": -2,
           "max": 6,
@@ -154,7 +154,7 @@
         {
           "type": "number",
           "name": "updateEveryXHour",
-          "label": "UPDATE_FREQUENCY",
+          "label": "UPDATE_FREQUENCY_LABEL",
           "id": "updateEveryXHour",
           "min": 0,
           "max": 24,
@@ -175,12 +175,12 @@
       "items": [
         {
           "type": "header",
-          "text": "ADVANCED_SETTINGS"
+          "text": "ADVANCED_SETTINGS_HEADER"
         },
         {
           "type": "number",
           "name": "defaultApiTime",
-          "label": "DEFAULT_API_TIME",
+          "label": "DEFAULT_API_TIME_LABEL",
           "id": "defaultApiTime",
           "min": 0,
           "max": 86399,
@@ -198,7 +198,7 @@
         {
           "type": "number",
           "name": "maxRetries",
-          "label": "MAX_RETRIES",
+          "label": "MAX_RETRIES_LABEL",
           "id": "maxRetries",
           "min": 0,
           "max": 10,
@@ -214,7 +214,7 @@
         {
           "type": "number",
           "name": "retryDelay",
-          "label": "RETRY_DELAY",
+          "label": "RETRY_DELAY_LABEL",
           "id": "retryDelay",
           "min": 1000,
           "max": 30000,
@@ -231,7 +231,7 @@
         {
           "type": "number",
           "name": "cacheTTL",
-          "label": "CACHE_TTL",
+          "label": "CACHE_TTL_LABEL",
           "id": "cacheTTL",
           "min": 60000,
           "max": 86400000,
@@ -248,7 +248,7 @@
         {
           "type": "number",
           "name": "requestTimeout",
-          "label": "REQUEST_TIMEOUT",
+          "label": "REQUEST_TIMEOUT_LABEL",
           "id": "requestTimeout",
           "min": 1000,
           "max": 60000,

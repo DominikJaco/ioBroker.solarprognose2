@@ -1,5 +1,8 @@
 
 # Changelog
+## [0.0.10] - 2025-06-22
+### Added
+- **I18N** Support for "en", "de", "es", "fr", "it", "nl", "pl", "pt", "ru", "uk", "zh-cn"
 
 ## [0.0.10] - 2025-06-22
 ### Breaking Changes

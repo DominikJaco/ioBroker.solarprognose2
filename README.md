@@ -118,7 +118,7 @@ Bei Problemen oder Fragen:
 ## Changelog
 [Siehe CHANGELOG.md](CHANGELOG.md)
 ### 0.0.11 - 2025-06-22
-- Fehlerbehebungen und Validierungsupdates
+- I18n support hinzugefügt
 
 ## Entwickler
 - DominikJaco ([GitHub](https://github.com/DominikJaco))
