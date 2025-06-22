@@ -1,6 +1,6 @@
 {
   "name": "iobroker.solarprognose2",
-  "version": "0.0.10",
+  "version": "0.0.11",
   "description": "Solar prognosis for ioBroker based on solarprognose.de",
   "author": {
     "name": "DominikJaco",

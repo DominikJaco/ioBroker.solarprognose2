@@ -2,11 +2,12 @@
   "type": "tabs",
   "items": [
     {
+      "type": "panel",
       "title": "API_SETTINGS",
       "items": [
         {
           "type": "text",
-          "name": "accessToken", 
+          "name": "accessToken",
           "label": "ACCESS_TOKEN",
           "id": "accessToken",
           "password": true,
@@ -19,10 +20,12 @@
           "label": "INVERTER_ID",
           "id": "inverterId",
           "min": 1,
-          "required": true
+          "required": true,
+          "help": "INVERTER_ID_HELP"
         },
         {
           "type": "select",
+          "name": "item",
           "label": "ITEM_TYPE",
           "id": "item",
           "options": [
@@ -39,17 +42,21 @@
               "label": "ITEM_LOCATION"
             }
           ],
-          "default": "inverter"
+          "default": "inverter",
+          "help": "ITEM_TYPE_HELP"
         },
         {
           "type": "text",
+          "name": "project",
           "label": "PROJECT_INFO",
           "id": "project",
-          "required": true
+          "required": true,
+          "help": "PROJECT_INFO_HELP"
         }
       ]
     },
     {
+      "type": "panel",
       "title": "FORECAST_SETTINGS",
       "items": [
         {
@@ -71,22 +78,27 @@
         },
         {
           "type": "number",
+          "name": "startDay",
           "label": "START_DAY",
           "id": "startDay",
           "min": -2,
           "max": 6,
-          "default": -2
+          "default": -2,
+          "help": "START_DAY_HELP"
         },
         {
           "type": "number",
+          "name": "endDay",
           "label": "END_DAY",
           "id": "endDay",
           "min": -2,
           "max": 6,
-          "default": 3
+          "default": 3,
+          "help": "END_DAY_HELP"
         },
         {
           "type": "number",
+          "name": "updateEveryXHour",
           "label": "UPDATE_FREQUENCY",
           "id": "updateEveryXHour",
           "min": 0,
@@ -97,19 +109,23 @@
       ]
     },
     {
+      "type": "panel",
       "title": "ADVANCED_SETTINGS",
       "items": [
         {
           "type": "number",
+          "name": "defaultApiTime",
           "label": "DEFAULT_API_TIME",
           "id": "defaultApiTime",
           "min": 0,
           "max": 86399,
           "default": 2133,
+          "suffix": "s",
           "help": "DEFAULT_API_TIME_HELP"
         },
         {
           "type": "number",
+          "name": "maxRetries",
           "label": "MAX_RETRIES",
           "id": "maxRetries",
           "min": 0,
@@ -118,6 +134,7 @@
         },
         {
           "type": "number",
+          "name": "retryDelay",
           "label": "RETRY_DELAY",
           "id": "retryDelay",
           "min": 1000,
@@ -127,6 +144,7 @@
         },
         {
           "type": "number",
+          "name": "cacheTTL",
           "label": "CACHE_TTL",
           "id": "cacheTTL",
           "min": 60000,
@@ -136,6 +154,7 @@
         },
         {
           "type": "number",
+          "name": "requestTimeout",
           "label": "REQUEST_TIMEOUT",
           "id": "requestTimeout",
           "min": 1000,

@@ -1,7 +1,7 @@
 {
   "common": {
     "name": "solarprognose2",
-    "version": "0.0.10",
+    "version": "0.0.11",
     "licenseInformation": {
       "type": "free",
       "license": "MIT",
@@ -38,9 +38,10 @@
       "zh-cn": "从 solarprognose.de 获取太阳能预测"
     },
     "news": {
-      "0.0.10": {
+
+      "0.0.11": {
         "en": "Fixed issues6",
-        "de": "anpassung auf schedule mode"
+        "de": "diverse fehler behoben"
       },
       "0.0.5": {
         "en": "Fixed issues3",
