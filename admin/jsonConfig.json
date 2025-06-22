@@ -1,5 +1,5 @@
 {
-  "type": "panel",
+  "type": "tabs",
   "items": [
     {
       "title": "API_SETTINGS",
@@ -14,7 +14,7 @@
           "help": "ACCESS_TOKEN_HELP"
         },
         {
-        "type": "number",
+          "type": "number",
           "name": "inverterId",
           "label": "INVERTER_ID",
           "id": "inverterId",

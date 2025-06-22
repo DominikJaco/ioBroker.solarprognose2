@@ -1,5 +1,6 @@
 'use strict';
-
+let waitTimeout = null;   // Für den Timeout-Reference
+let waitResolve = null;   // Für die resolve-Funktion
 const utils = require('@iobroker/adapter-core');
 const got = require('got');
 const moment = require('moment');
@@ -62,7 +63,18 @@ class Solarprognose2 extends utils.Adapter {
         this.log.info(`Waiting ${waitTime}ms for lead time`);
         
         if (waitTime > 0) {
-            await new Promise(resolve => setTimeout(resolve, waitTime));
+            // Original:
+            // await new Promise(resolve => setTimeout(resolve, waitTime));
+            // Geändert:
+            await new Promise((resolve) => {
+            waitResolve = resolve;  // resolve-Funktion speichern
+
+            waitTimeout = setTimeout(() => {
+                resolve();
+                waitTimeout = null;   // Reset nach Ausführung
+                waitResolve = null;
+            }, waitTime);
+            });
         }
         
         // Jetzt sind wir an der vollen Stunde + API-Minuten
@@ -80,7 +92,18 @@ class Solarprognose2 extends utils.Adapter {
         
         if (secondsToWait > 0) {
             this.log.info(`Waiting ${secondsToWait} seconds for API second`);
-            await new Promise(resolve => setTimeout(resolve, secondsToWait * 1000));
+            // Original:
+            //await new Promise(resolve => setTimeout(resolve, secondsToWait * 1000));
+            // Geändert:
+            await new Promise((resolve) => {
+            waitResolve = resolve;  // resolve-Funktion speichern
+
+            waitTimeout = setTimeout(() => {
+                resolve();
+                waitTimeout = null;   // Reset nach Ausführung
+                waitResolve = null;
+            }, secondsToWait * 1000);
+            });
         }
         
         const currentTime = moment.utc().format('HH:mm:ss.SSS');
@@ -249,7 +272,24 @@ class Solarprognose2 extends utils.Adapter {
     }
 
     onUnload(callback) {
-        callback();
+        try {
+            // Existierenden Timeout abbrechen
+            if (waitTimeout) {
+            clearTimeout(waitTimeout);
+            waitTimeout = null;
+            }
+            
+            // Promise manuell auflösen (verhindert Hängen)
+            if (waitResolve) {
+            waitResolve();
+            waitResolve = null;
+            }
+            
+            // Hier ggf. andere Resourcen bereinigen
+            callback();
+        } catch (err) {
+            callback();
+        }
     }
 }
 

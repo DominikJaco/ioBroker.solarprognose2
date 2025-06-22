@@ -40,8 +40,8 @@ Dieser Adapter liefert Solarprognosen für ioBroker basierend auf Daten von [sol
 
 | Parameter | Beschreibung | Beispiel |
 |-----------|-------------|----------|
-| **Access Token** | Von solarprognose.de bezogenes API-Token | `bdb1667e6a17553bbe82b6d3169d77bc` |
-| **Inverter ID** | ID des Wechselrichters bei solarprognose.de | `6620` |
+| **Access Token** | Von solarprognose.de bezogenes API-Token | `abcdefghijklmnopqrstuvwxyz123456` |
+| **Inverter ID** | ID des Wechselrichters bei solarprognose.de | `1234` |
 | **Item** | Gerätetyp (`inverter` oder `system`) | `inverter` |
 
 ### Optionale Parameter
@@ -117,10 +117,8 @@ Bei Problemen oder Fragen:
 
 ## Changelog
 [Siehe CHANGELOG.md](CHANGELOG.md)
-# [0.0.10] - 2025-06-22
-### Breaking Changes
-- **Betriebsmodus-Wechsel**: Der Adapter läuft jetzt im `schedule`-Modus statt als Daemon
-- **Startverhalten**: Der Adapter wird nur noch zu Update-Zeiten gestartet und beendet sich danach automatisch
+### 0.0.11 - 2025-06-22
+- Fehlerbehebungen und Validierungsupdates
 
 ## Entwickler
 - DominikJaco ([GitHub](https://github.com/DominikJaco))
