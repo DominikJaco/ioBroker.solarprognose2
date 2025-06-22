@@ -16,13 +16,11 @@
           "password": true,
           "required": true,
           "help": "ACCESS_TOKEN_HELP",
-          "width": {
             "xs": 12,
             "sm": 12,
             "md": 12,
             "lg": 12,
             "xl": 12
-          }
         },
         {
           "type": "number",
@@ -32,13 +30,11 @@
           "min": 1,
           "required": true,
           "help": "INVERTER_ID_HELP",
-          "width": {
             "xs": 12,
             "sm": 12,
             "md": 12,
             "lg": 12,
             "xl": 12
-          }
         },
         {
           "type": "select",
@@ -61,13 +57,11 @@
           ],
           "default": "inverter",
           "help": "ITEM_TYPE_HELP",
-          "width": {
             "xs": 12,
             "sm": 12,
             "md": 12,
             "lg": 12,
             "xl": 12
-          }
         },
         {
           "type": "text",
@@ -76,13 +70,11 @@
           "id": "project",
           "required": true,
           "help": "PROJECT_INFO_HELP",
-          "width": {
             "xs": 12,
             "sm": 12,
             "md": 12,
             "lg": 12,
             "xl": 12
-          }
         }
       ]
     },
@@ -109,13 +101,11 @@
             }
           ],
           "default": "hourly",
-          "width": {
             "xs": 12,
             "sm": 12,
             "md": 12,
             "lg": 12,
             "xl": 12
-          }
         },
         {
           "type": "number",
@@ -126,13 +116,11 @@
           "max": 6,
           "default": -2,
           "help": "START_DAY_HELP",
-          "width": {
             "xs": 12,
             "sm": 12,
             "md": 12,
             "lg": 12,
             "xl": 12
-          }
         },
         {
           "type": "number",
@@ -143,13 +131,11 @@
           "max": 6,
           "default": 3,
           "help": "END_DAY_HELP",
-          "width": {
             "xs": 12,
             "sm": 12,
             "md": 12,
             "lg": 12,
             "xl": 12
-          }
         },
         {
           "type": "number",
@@ -160,13 +146,11 @@
           "max": 24,
           "default": 2,
           "help": "UPDATE_FREQUENCY_HELP",
-          "width": {
             "xs": 12,
             "sm": 12,
             "md": 12,
             "lg": 12,
             "xl": 12
-          }
         }
       ]
     },
@@ -187,13 +171,11 @@
           "default": 2133,
           "suffix": "s",
           "help": "DEFAULT_API_TIME_HELP",
-          "width": {
             "xs": 12,
             "sm": 12,
             "md": 12,
             "lg": 12,
             "xl": 12
-          }
         },
         {
           "type": "number",
@@ -203,13 +185,11 @@
           "min": 0,
           "max": 10,
           "default": 3,
-          "width": {
             "xs": 12,
             "sm": 12,
             "md": 12,
             "lg": 12,
             "xl": 12
-          }
         },
         {
           "type": "number",
@@ -220,13 +200,11 @@
           "max": 30000,
           "default": 5000,
           "suffix": "ms",
-          "width": {
             "xs": 12,
             "sm": 12,
             "md": 12,
             "lg": 12,
             "xl": 12
-          }
         },
         {
           "type": "number",
@@ -237,13 +215,11 @@
           "max": 86400000,
           "default": 300000,
           "suffix": "ms",
-          "width": {
             "xs": 12,
             "sm": 12,
             "md": 12,
             "lg": 12,
             "xl": 12
-          }
         },
         {
           "type": "number",
@@ -254,13 +230,11 @@
           "max": 60000,
           "default": 15000,
           "suffix": "ms",
-          "width": {
             "xs": 12,
             "sm": 12,
             "md": 12,
             "lg": 12,
             "xl": 12
-          }
         }
       ]
     }
