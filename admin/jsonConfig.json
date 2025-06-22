@@ -2,7 +2,7 @@
   "type": "tabs",
   "items": [
     {
-      "type": "panel",
+      "type": "tab",
       "title": "API_SETTINGS",
       "items": [
         {
@@ -12,7 +12,8 @@
           "id": "accessToken",
           "password": true,
           "required": true,
-          "help": "ACCESS_TOKEN_HELP"
+          "help": "ACCESS_TOKEN_HELP",
+          "width": 12
         },
         {
           "type": "number",
@@ -21,7 +22,8 @@
           "id": "inverterId",
           "min": 1,
           "required": true,
-          "help": "INVERTER_ID_HELP"
+          "help": "INVERTER_ID_HELP",
+          "width": 12
         },
         {
           "type": "select",
@@ -43,7 +45,8 @@
             }
           ],
           "default": "inverter",
-          "help": "ITEM_TYPE_HELP"
+          "help": "ITEM_TYPE_HELP",
+          "width": 12
         },
         {
           "type": "text",
@@ -51,12 +54,13 @@
           "label": "PROJECT_INFO",
           "id": "project",
           "required": true,
-          "help": "PROJECT_INFO_HELP"
+          "help": "PROJECT_INFO_HELP",
+          "width": 12
         }
       ]
     },
     {
-      "type": "panel",
+      "type": "tab",
       "title": "FORECAST_SETTINGS",
       "items": [
         {
@@ -74,7 +78,8 @@
               "label": "Daily"
             }
           ],
-          "default": "hourly"
+          "default": "hourly",
+          "width": 12
         },
         {
           "type": "number",
@@ -84,7 +89,8 @@
           "min": -2,
           "max": 6,
           "default": -2,
-          "help": "START_DAY_HELP"
+          "help": "START_DAY_HELP",
+          "width": 12
         },
         {
           "type": "number",
@@ -94,7 +100,8 @@
           "min": -2,
           "max": 6,
           "default": 3,
-          "help": "END_DAY_HELP"
+          "help": "END_DAY_HELP",
+          "width": 12
         },
         {
           "type": "number",
@@ -104,12 +111,13 @@
           "min": 0,
           "max": 24,
           "default": 2,
-          "help": "UPDATE_FREQUENCY_HELP"
+          "help": "UPDATE_FREQUENCY_HELP",
+          "width": 12
         }
       ]
     },
     {
-      "type": "panel",
+      "type": "tab",
       "title": "ADVANCED_SETTINGS",
       "items": [
         {
@@ -121,7 +129,8 @@
           "max": 86399,
           "default": 2133,
           "suffix": "s",
-          "help": "DEFAULT_API_TIME_HELP"
+          "help": "DEFAULT_API_TIME_HELP",
+          "width": 12
         },
         {
           "type": "number",
@@ -130,7 +139,8 @@
           "id": "maxRetries",
           "min": 0,
           "max": 10,
-          "default": 3
+          "default": 3,
+          "width": 12
         },
         {
           "type": "number",
@@ -140,7 +150,8 @@
           "min": 1000,
           "max": 30000,
           "default": 5000,
-          "suffix": "ms"
+          "suffix": "ms",
+          "width": 12
         },
         {
           "type": "number",
@@ -150,7 +161,8 @@
           "min": 60000,
           "max": 86400000,
           "default": 300000,
-          "suffix": "ms"
+          "suffix": "ms",
+          "width": 12
         },
         {
           "type": "number",
@@ -160,7 +172,8 @@
           "min": 1000,
           "max": 60000,
           "default": 15000,
-          "suffix": "ms"
+          "suffix": "ms",
+          "width": 12
         }
       ]
     }
