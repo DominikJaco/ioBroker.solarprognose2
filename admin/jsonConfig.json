@@ -2,7 +2,7 @@
   "type": "tabs",
   "items": [
     {
-      "type": "tab",
+      "type": "panel",
       "title": "API_SETTINGS",
       "items": [
         {
@@ -60,7 +60,7 @@
       ]
     },
     {
-      "type": "tab",
+      "type": "panel",
       "title": "FORECAST_SETTINGS",
       "items": [
         {
@@ -117,7 +117,7 @@
       ]
     },
     {
-      "type": "tab",
+      "type": "panel",
       "title": "ADVANCED_SETTINGS",
       "items": [
         {
