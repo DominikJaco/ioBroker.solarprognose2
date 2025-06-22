@@ -100,7 +100,7 @@
   "enabled": true,
   "messagebox": true,
   "materialize": true,
-  "i18n": [
+  "languages": [
     "en",
     "de",
     "ru",
